@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>IPL Squads</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+      background: #0b1220;
+      color: white;
+    }
+
+    h1 {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .team-buttons {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .team-buttons button {
+      margin: 5px;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 20px;
+      background: #ff0055;
+      color: white;
+      cursor: pointer;
+    }
+
+    .team-buttons button:hover {
+      background: #ffcc00;
+      color: black;
+    }
+
+    .squad-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      padding: 20px;
+    }
+
+    .player-card {
+      background: #111827;
+      width: 160px;
+      border-radius: 12px;
+      padding: 10px;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .player-card:hover {
+      transform: scale(1.05);
+    }
+
+    .player-card img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .back {
+      display: block;
+      text-align: center;
+      margin: 10px;
+      color: #ffcc00;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>IPL 2026 Full Squads</h1>
+
+<a class="back" href="index.html">⬅ Back to Home</a>
+
+<div class="team-buttons">
+  <button onclick="showTeam('SRH')">SRH</button>
+  <button onclick="showTeam('MI')">MI</button>
+  <button onclick="showTeam('CSK')">CSK</button>
+  <button onclick="showTeam('RCB')">RCB</button>
+</div>
+
+<div id="squadContainer" class="squad-container"></div>
+
+<script>
+const squads = {
+  SRH: [
+    {
+      name: "Pat Cummins",
+      role: "Bowler",
+      runs: 350,
+      centuries: 0,
+      wickets: 45,
+      img: "images/srh1.jpg"
+    },
+    {
+      name: "Heinrich Klaasen",
+      role: "Wicket Keeper",
+      runs: 1200,
+      centuries: 2,
+      wickets: 0,
+      img: "images/srh2.jpg"
+    },
+    {
+      name: "Abhishek Sharma",
+      role: "All Rounder",
+      runs: 900,
+      centuries: 1,
+      wickets: 10,
+      img: "images/srh3.jpg"
+    },
+    {
+      name: "Aiden Markram",
+      role: "Batsman",
+      runs: 1500,
+      centuries: 3,
+      wickets: 5,
+      img: "images/srh4.jpg"
+    }
+  ],
+
+  MI: [
+    {
+      name: "Rohit Sharma",
+      role: "Batsman",
+      runs: 6000,
+      centuries: 6,
+      wickets: 0,
+      img: "images/mi1.jpg"
+    },
+    {
+      name: "Jasprit Bumrah",
+      role: "Bowler",
+      runs: 200,
+      centuries: 0,
+      wickets: 170,
+      img: "images/mi2.jpg"
+    }
+  ],
+
+  CSK: [
+    {
+      name: "MS Dhoni",
+      role: "Wicket Keeper",
+      runs: 5000,
+      centuries: 0,
+      wickets: 0,
+      img: "images/csk1.jpg"
+    },
+    {
+      name: "Ruturaj Gaikwad",
+      role: "Batsman",
+      runs: 1800,
+      centuries: 2,
+      wickets: 0,
+      img: "images/csk2.jpg"
+    }
+  ],
+
+  RCB: [
+    {
+      name: "Virat Kohli",
+      role: "Batsman",
+      runs: 7000,
+      centuries: 7,
+      wickets: 4,
+      img: "images/rcb1.jpg"
+    },
+    {
+      name: "Faf du Plessis",
+      role: "Batsman",
+      runs: 4000,
+      centuries: 3,
+      wickets: 1,
+      img: "images/rcb2.jpg"
+    }
+  ]
+};
+
+function showTeam(team) {
+  const container = document.getElementById("squadContainer");
+  container.innerHTML = "";
+
+  squads[team].forEach(player => {
+    container.innerHTML += `
+      <div class="player-card">
+        <img src="${player.img}">
+        <h3>${player.name}</h3>
+        <p><b>Role:</b> ${player.role}</p>
+        <p>🏏 Runs: ${player.runs}</p>
+        <p>💯 Centuries: ${player.centuries}</p>
+        <p>🎯 Wickets: ${player.wickets}</p>
+      </div>
+    `;
+  });
+}
+</script>
+
+</body>
+</html>
